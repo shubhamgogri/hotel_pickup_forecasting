@@ -24,3 +24,28 @@ class DataTransformationConfig:
     target: str
     cutoff_date: str
     
+@dataclass(frozen= True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_data_path: Path
+    test_data_path:Path
+    model_name: str
+    learning_rate: float
+    n_estimators: float
+    early_stopping_rounds: float
+    target_column: str
+    base_score: float
+    booster:str
+    objective:str
+    max_depth: float
+ 
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    all_params: dict
+    metric_file_name: Path
+    target_column: str
+    mlflow_uri: str

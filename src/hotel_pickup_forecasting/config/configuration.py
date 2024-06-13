@@ -1,6 +1,6 @@
 from hotel_pickup_forecasting.constants import *
 from hotel_pickup_forecasting.utils.common import read_yaml, create_directories
-from hotel_pickup_forecasting.entity.config_entity import DataTransformationConfig, DataIngestionConfig, DataValidationConfig
+from hotel_pickup_forecasting.entity.config_entity import DataTransformationConfig, DataIngestionConfig, DataValidationConfig, ModelEvaluationConfig, ModelTrainerConfig
 
 class ConfigurationManager:
     def __init__(
@@ -63,44 +63,48 @@ class ConfigurationManager:
     
 
 
-    # def get_model_trainer_config(self) -> ModelTrainerConfig:
-    #     config = self.config.model_trainer
-    #     params = self.params.ElasticNet
-    #     schema =  self.schema.TARGET_COLUMN
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.XGBOOST
+        schema =  self.schema.TARGET_COLUMN
 
-    #     create_directories([config.root_dir])
+        create_directories([config.root_dir])
 
-    #     model_trainer_config = ModelTrainerConfig(
-    #         root_dir=config.root_dir,
-    #         train_data_path = config.train_data_path,
-    #         test_data_path = config.test_data_path,
-    #         model_name = config.model_name,
-    #         alpha = params.alpha,
-    #         l1_ratio = params.l1_ratio,
-    #         target_column = schema.name
-            
-    #     )
-
-    #     return model_trainer_config
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data_path = config.train_data_path,
+            test_data_path = config.test_data_path,
+            learning_rate = params.learning_rate,
+            n_estimators = params.n_estimators,
+            early_stopping_rounds = params.early_stopping_rounds,
+            target_column = schema.name,
+            model_name = config.model_name,
+            base_score = params.base_score,
+            booster= params.booster,
+            objective= params.objective,
+            max_depth=params.max_depth
+        )
+ 
+        return model_trainer_config
     
 
 
-    # def get_model_evaluation_config(self) -> ModelEvaluationConfig:
-    #     config = self.config.model_evaluation
-    #     params = self.params.ElasticNet
-    #     schema =  self.schema.TARGET_COLUMN
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        params = self.params.XGBOOST
+        schema =  self.schema.TARGET_COLUMN
 
-    #     create_directories([config.root_dir])
+        create_directories([config.root_dir])
 
-    #     model_evaluation_config = ModelEvaluationConfig(
-    #         root_dir=config.root_dir,
-    #         test_data_path=config.test_data_path,
-    #         model_path = config.model_path,
-    #         all_params=params,
-    #         metric_file_name = config.metric_file_name,
-    #         target_column = schema.name,
-    #         mlflow_uri="https://dagshub.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow.mlflow",
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path = config.model_path,
+            all_params=params,
+            metric_file_name = config.metric_file_name,
+            target_column = schema.name,
+            mlflow_uri="https://dagshub.com/shubhamgogri/hotel_pickup_forecasting.mlflow",
            
-    #     )
+        )
 
-    #     return model_evaluation_config
+        return model_evaluation_config
