@@ -8,6 +8,8 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
+import pandas as pd
+
 
 
 
@@ -126,5 +128,14 @@ def get_size(path: Path) -> str:
     return f"~ {size_in_kb} KB"
 
 
+@ensure_annotations
+def date_to_numeric(s: pd.Series) -> pd.Series:
+    s_n = pd.to_numeric(s, downcast='float')
+    logger.info("Converted Date to number")
+    return s_n 
 
-
+@ensure_annotations
+def number_to_date(s: pd.Series) -> pd.Series:
+    s_d = pd.to_datetime(s)
+    logger.info("Converted number to date")
+    return s_d

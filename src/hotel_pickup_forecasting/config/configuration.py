@@ -1,6 +1,6 @@
 from hotel_pickup_forecasting.constants import *
 from hotel_pickup_forecasting.utils.common import read_yaml, create_directories
-from hotel_pickup_forecasting.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from hotel_pickup_forecasting.entity.config_entity import DataTransformationConfig, DataIngestionConfig, DataValidationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -46,17 +46,20 @@ class ConfigurationManager:
 
         return data_validation_config
 
-    # def get_data_transformation_config(self) -> DataTransformationConfig:
-    #     config = self.config.data_transformation
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        schema = self.schema
 
-    #     create_directories([config.root_dir])
+        create_directories([config.root_dir])
 
-    #     data_transformation_config = DataTransformationConfig(
-    #         root_dir=config.root_dir,
-    #         data_path=config.data_path,
-    #     )
-
-    #     return data_transformation_config
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            all_schema = schema.COLUMNS.keys(), 
+            target = config.target ,
+            cutoff_date = config.cutoff_date
+        )
+        return data_transformation_config
     
 
 

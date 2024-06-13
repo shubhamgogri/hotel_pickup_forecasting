@@ -12,3 +12,10 @@ data_validation:
   root_dir: artifacts/data_validation
   unzip_data_dir: artifacts\data_ingestion\dynamic_reservations_feat.csv
   STATUS_FILE: artifacts/data_validation/status.txt
+
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts\data_ingestion\dynamic_reservations_feat.csv
+  target: pickup_3
+  cutoff_date: 01-01-2024
