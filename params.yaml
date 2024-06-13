@@ -1,9 +1,9 @@
 XGBOOST:
   n_estimators: 1500
   early_stopping_rounds: 50
-  learning_rate: 0.001    
+  learning_rate: 0.0005    
   base_score: 0.6
-  booster: gbtree
+  booster: gblinear
   objective: reg:linear
   max_depth: 3
 
