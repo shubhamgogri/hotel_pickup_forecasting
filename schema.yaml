@@ -1,1 +1,74 @@
-key: value
+COLUMNS:
+  3D_MA_comp_med_rate: float64
+  3D_MA_log_vi_comp_median: float64
+  3D_MA_rate: float64
+  7D_MA_comp_med_rate: float64
+  7D_MA_log_vi_comp_median: float64
+  7D_MA_rate: float64
+  Dynamic Rooms (Calculated): float64
+  cancel_date: datetime64[ns]
+  competitor_max_rate: float64
+  competitor_median_rate: float64
+  competitor_median_rate_-1: float64
+  competitor_median_rate_-2: float64
+  competitor_median_rate_-3: float64
+  competitor_median_rate_-4: float64
+  competitor_median_rate_-5: float64
+  competitor_median_rate_-6: float64
+  competitor_median_rate_-7: float64
+  competitor_min_rate: float64
+  cumulative_cancellations: float64
+  cumulative_reservations: float64
+  cumulative_reservations_-1: float64
+  cumulative_reservations_-28: float64
+  cumulative_reservations_-3: float64
+  cumulative_reservations_-7: float64
+  daily_cancellations: float64
+  daily_reservation: float64
+  dynamic_room_revenue: float64
+  dynamic_rooms: float64
+  dynamic_rooms_diff: float64
+  final_week: int64
+  lead_in: int64
+  log_competitor_rate: float64
+  log_pickup_-3: float64
+  log_pickup_-7: float64
+  log_rate: float64
+  log_vi_comp_median: float64
+  log_vi_comp_median_-1: float64
+  log_vi_comp_median_-2: float64
+  log_vi_comp_median_-3: float64
+  log_vi_comp_median_-4: float64
+  log_vi_comp_median_-5: float64
+  log_vi_comp_median_-6: float64
+  log_vi_comp_median_-7: float64
+  occupancy change: float64
+  occupancy change_-3: float64
+  pickup_-3: float64
+  pickup_-7: float64
+  rate: float64
+  rate_-1: float64
+  rate_-2: float64
+  rate_-3: float64
+  rate_-4: float64
+  rate_-5: float64
+  rate_-6: float64
+  rate_-7: float64
+  report_date_day_of_month: int64
+  report_date_day_of_week: int64
+  report_date_month: int64
+  report_date_year: int64
+  stay_date: datetime64[ns]
+  stay_date_day_of_month: int64
+  stay_date_day_of_week: int64
+  stay_date_month: int64
+  stay_date_week_of_year: int64
+  stay_date_year: int64
+  total_room_revenue: float64
+  total_rooms: float64
+  total_rooms_-3: float64
+  vi_comp_median: float64
+  vi_comp_min: float64
+
+TARGET_COLUMN:
+  name: pickup_3
